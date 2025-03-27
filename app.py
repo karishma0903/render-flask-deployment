@@ -20,6 +20,10 @@ with open("recommendation_pca.pkl", "rb") as f:
 with open("recommendation_student_rf.pkl", "rb") as f:
     recommendation_model = pickle.load(f)
 
+@app.route('/')
+def home():
+    return jsonify({"message": "Welcome to the GDM Prediction API. Use /predict to make predictions."})
+
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json
@@ -49,4 +53,4 @@ def predict():
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))  # Railway/Fly.io assigns the port automatically
     app.run(host='0.0.0.0', port=port)
-    #app.run(host='127.0.0.1', port=5000, debug=True)
+    # actual app.run(host='127.0.0.1', port=5000, debug=True)
