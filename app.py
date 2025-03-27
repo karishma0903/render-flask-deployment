@@ -47,7 +47,6 @@ def predict():
     return jsonify({"gdm_type": gdm_type, "recommendations": recommendations})
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 10000))  # Render sets the PORT automatically
+    port = int(os.environ.get("PORT", 5000))  # Railway/Fly.io assigns the port automatically
     app.run(host='0.0.0.0', port=port)
-    #app.run(host='0.0.0.0', port=10000)
     #app.run(host='127.0.0.1', port=5000, debug=True)
